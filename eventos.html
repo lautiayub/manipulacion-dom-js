@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a id="google" href="google.com">Google</a>
+    <button id="boton">Boton</button>
+    <input type="text" id="input">
+    <script>
+        (function(){
+            var saludo =function(){
+                alert("Saludo")}
+            var saludo2 =function(){
+                alert("Saludo2")}
+
+            var focusSaludo = function(){
+                console.log("focus") //se ejecuta cuando estas dentro de un formluario
+            }
+
+            var tipoDeEvento= function(e){
+                console.log("este evento es de tipo: " + e.type)
+            }
+
+            var prevent = function(e){
+                alert("no va a entrtar a este link")
+                e.preventDefault();         //previene el comportamiento de ciertos elementos.
+            }
+            var a = document.getElementById("google")
+            var boton = document.getElementById("boton");
+            var input= document.getElementById("input")
+
+            boton.addEventListener("click",saludo)
+            boton.addEventListener("click", saludo2)        //se pueden agregar infinitos elementos
+            input.addEventListener("focus", focusSaludo)
+            input.addEventListener("blur", focusSaludo)         //como focus, pero lo contrario, se ejecuta una vez que salis del formulario
+            input.addEventListener("change", focusSaludo)       //detecta cuando hay un cambio
+            boton.removeEventListener("click",saludo)       //Elimina el evento , saludo ya no aparece si haces "click"
+            boton.addEventListener("click",tipoDeEvento)
+            a.addEventListener("click",prevent)
+        }())
+
+    </script>
+</body>
+</html>
